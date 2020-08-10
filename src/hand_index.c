@@ -358,11 +358,6 @@ bool hand_indexer_init(uint_fast32_t rounds, const uint8_t cards_per_round[], ha
   for(uint_fast32_t i=0; i<rounds; ++i) {
     indexer->permutation_to_configuration[i] = calloc(indexer->permutations[i], sizeof(uint_fast32_t));
     indexer->permutation_to_pi[i] = calloc(indexer->permutations[i], sizeof(uint_fast32_t));
-    if (!indexer->permutation_to_configuration ||
-        !indexer->permutation_to_pi) {
-      hand_indexer_free(indexer);
-      return false; 
-    }
   }
 
   enumerate_permutations(rounds, cards_per_round, tabulate_permutations, indexer);
